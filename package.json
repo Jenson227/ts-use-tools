@@ -1,0 +1,29 @@
+{
+  "name": "ts-use-tools",
+  "version": "1.0.1",
+  "description": "personal tools for typeScript",
+  "keywords": [
+    "ts-use-tools",
+    "tools",
+    "tool",
+    "utils",
+    "util"
+  ],
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --watch",
+    "start": "node index"
+  },
+  "author": "Jason",
+  "license": "ISC",
+  "homepage": "",
+  "publicConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "babel-loader": "^9.1.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
