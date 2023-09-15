@@ -1,4 +1,4 @@
-import LRUCache from './utils/LRU-cache'
+import LRUCache from './utils/LRU-cache.js'
 
 const LRUCacheTemp = new LRUCache(4)
 console.log(LRUCacheTemp.get(1))
@@ -14,6 +14,7 @@ console.log(LRUCacheTemp.cache)
 console.log(LRUCacheTemp.get(1))
 console.log(LRUCacheTemp.cache)
 console.log(LRUCacheTemp.cache.keys().next())
+console.log(123)
 
 export default {
   LRUCache

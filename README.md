@@ -1,45 +1,91 @@
-# ts-use-tools
+# use-jtools
 
-This is a web side commonly used typeScript tools.
+This is a web side commonly used tools.
 
-## Install
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+### Install Dependencies
 
 ```sh
-pnpm install ts-use-tools -d -s
+pnpm install
 or
-npm install ts-use-tools -d -s
+npm install
 ```
 
-## Upgrade
-
-Specify version
+### Husky Init
 
 ```sh
-pnpm install ts-use-tools@1.0.0 -d -s
+pnpm run prepare
 or
-npm install ts-use-tools@1.0.0 -d -s
+npm run prepare
 ```
 
-Latest version
+### Lint before Commit
 
 ```sh
-pnpm install ts-use-tools@latest -d -s
+pnpm run pre-commit
 or
-npm install ts-use-tools@latest -d -s
+npm run pre-commit
 ```
 
-## Usage
-
-esm
+### Compile and Hot-Reload for Development
 
 ```sh
-import utils from 'ts-use-tools'
+pnpm run dev
 or
-import { xxxx } from 'ts-use-tools'
+npm run dev
 ```
 
-commonjs
+### Type-Check, Compile and Minify for Production
 
 ```sh
-const utils = require('ts-use-tools')
+pnpm run build
+or
+npm run build
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+pnpm run lint
+or
+npm run lint
+```
+
+## Submission Information Specification
+
+```sh
+​feat: add new features
+```
+
+```sh
+fix: fix bug
+```
+
+```sh
+docs: update the document
+```
+
+```sh
+perf: optimize performance
+```
+
+```sh
+refactor: refactor the code
+```
+
+```sh
+test: code testing
+```
+
+```sh
+ci: continuous integration process related
+```
+
+```sh
+chore: record anything
 ```

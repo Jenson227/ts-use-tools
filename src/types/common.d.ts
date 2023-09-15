@@ -1,0 +1,3 @@
+interface LRUCache {
+  max: number
+}

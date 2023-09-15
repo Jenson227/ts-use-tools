@@ -1,0 +1,24 @@
+{
+  "name": "use-jtools",
+  "version": "1.0.1",
+  "description": "personal tools for typeScript",
+  "keywords": [
+    "use-jtools",
+    "tools",
+    "tool",
+    "utils",
+    "util"
+  ],
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Jason",
+  "license": "ISC",
+  "homepage": "",
+  "publicConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}
