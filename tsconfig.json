@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "module": "ESNext",
-    "types": ["node"],
+    "rootDir": "./src",
+    "outDir": "./dist",
     "baseUrl": "./",
+    "module": "ESNext",
+    "target": "ESNext",
+    "types": ["node"],
     "paths": {
       "@/*": ["src/*"]
     }
@@ -11,7 +13,6 @@
   "ts-node": {
     "esm": true
   },
-  "rootDir": "./src",
-  "outDir": "./dist"
-  // "include": ["./*.d.ts", "./*.ts", "src/*.d.ts", "src/*.ts", "src/**/*.d.ts", "src/**/*.ts", "src/main.ts"]
+  "include": ["src/*.d.ts", "src/*.ts", "src/**/*.d.ts", "src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
