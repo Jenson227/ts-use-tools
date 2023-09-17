@@ -16,8 +16,6 @@ console.log(LRUCacheTemp.cache)
 console.log(LRUCacheTemp.get(1))
 console.log(LRUCacheTemp.cache)
 console.log(LRUCacheTemp.cache.keys().next())
-console.log(123)
-console.log(456)
 
 export default {
   LRUCache
