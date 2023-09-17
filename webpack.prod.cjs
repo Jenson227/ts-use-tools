@@ -6,14 +6,14 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const outputFileName = 'use-jtools.min.js'
 
 const packageConfig = JSON.parse(fs.readFileSync(path.join(__dirname, './package.json')))
-const publicPackagePath = path.join(__dirname, './public/package.json')
-const publicPackageConfig = JSON.parse(fs.readFileSync(publicPackagePath))
-publicPackageConfig.name = packageConfig.name
-publicPackageConfig.version = packageConfig.version
-publicPackageConfig.description = packageConfig.description
-publicPackageConfig.main = outputFileName
-publicPackageConfig.scripts.start = 'node ' + outputFileName
-fs.writeFileSync(publicPackagePath, JSON.stringify(publicPackageConfig, null, 2))
+const outputPackagePath = path.join(__dirname, './public/package.json')
+const outputPackageConfig = JSON.parse(fs.readFileSync(outputPackagePath))
+outputPackageConfig.name = packageConfig.name
+outputPackageConfig.version = packageConfig.version
+outputPackageConfig.description = packageConfig.description
+outputPackageConfig.main = outputFileName
+outputPackageConfig.scripts.start = 'node ' + outputFileName
+fs.writeFileSync(outputPackagePath, JSON.stringify(outputPackageConfig, null, 2))
 
 module.exports = {
   mode: 'production',
@@ -24,7 +24,7 @@ module.exports = {
     //利用path可完整拼出打包文件的目录
     path: path.resolve(__dirname, 'dist'),
     //打包后的文件
-    filename: publicPackageConfig.main,
+    filename: outputPackageConfig.main,
     environment: {
       arrowFunction: false
     }
