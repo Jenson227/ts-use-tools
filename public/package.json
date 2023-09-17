@@ -11,9 +11,9 @@
     "utils",
     "util"
   ],
-  "main": "use-jtools.min.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node use-jtools.min.js"
+    "start": "node index.js"
   },
   "homepage": "",
   "publicConfig": {

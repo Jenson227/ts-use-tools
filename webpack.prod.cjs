@@ -2,36 +2,40 @@ const path = require('path')
 const fs = require('fs')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-
-const outputFileName = 'use-jtools.min.js'
+const TerserWebpackPlugin = require('terser-webpack-plugin')
 
 const packageConfig = JSON.parse(fs.readFileSync(path.join(__dirname, './package.json')))
+const fileName = packageConfig.name
 const outputPackagePath = path.join(__dirname, './public/package.json')
 const outputPackageConfig = JSON.parse(fs.readFileSync(outputPackagePath))
-outputPackageConfig.name = packageConfig.name
+outputPackageConfig.name = fileName
 outputPackageConfig.version = packageConfig.version
 outputPackageConfig.description = packageConfig.description
-outputPackageConfig.main = outputFileName
-outputPackageConfig.scripts.start = 'node ' + outputFileName
+outputPackageConfig.author = packageConfig.author
 fs.writeFileSync(outputPackagePath, JSON.stringify(outputPackageConfig, null, 2))
 
 module.exports = {
   mode: 'production',
-  //指定入口文件
   entry: './src/main.ts',
-  //指定打包文件所在的目录
   output: {
-    //利用path可完整拼出打包文件的目录
     path: path.resolve(__dirname, 'dist'),
-    //打包后的文件
-    filename: outputPackageConfig.main,
+    filename: 'index.js',
+    globalObject: 'globalThis',
+    library: 'jtools',
+    libraryTarget: 'umd',
     environment: {
       arrowFunction: false
     }
   },
   optimization: {
+    nodeEnv: 'production',
     minimize: true,
-    nodeEnv: 'production'
+    minimizer: [
+      new TerserWebpackPlugin({
+        // include: /\.min\.js$/
+        include: /\.js$/
+      })
+    ]
   },
   module: {
     //指定要加载的规则
@@ -102,8 +106,9 @@ module.exports = {
       ]
     })
   ],
-  // 模块配置：webpack了解哪些方法可以被当作模块/入
   resolve: {
+    mainFields: ['browser', 'module', 'main'],
     extensions: ['.tsx', '.ts', '.js']
-  }
+  },
+  target: 'node'
 }
