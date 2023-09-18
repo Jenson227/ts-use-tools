@@ -1,9 +1,13 @@
+/**
+ * 满足LRU（最近最少使用）缓存约束的数据结构
+ **/
 export class LRUCache {
-  cache = new Map()
-  max = 10
+  private cache: Map<number | string, number>
+  private max: number
 
   constructor(capacity: number) {
-    if (!isNaN(capacity)) this.max = capacity
+    this.max = !isNaN(capacity) ? capacity : 10
+    this.cache = new Map()
   }
 
   get(key: number | string): number {
@@ -34,7 +38,4 @@ export default LRUCache
 // console.log(LRUCacheTemp.get(2))
 // console.log(LRUCacheTemp.get(3))
 // console.log(LRUCacheTemp.get(4))
-// console.log(LRUCacheTemp.cache)
 // console.log(LRUCacheTemp.get(1))
-// console.log(LRUCacheTemp.cache)
-// console.log(LRUCacheTemp.cache.keys().next())
