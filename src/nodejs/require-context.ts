@@ -13,9 +13,8 @@ const load = (path, name) => (name ? require(path + '/' + name) : require(path))
  * @param { args } args
  * @return { any }
  **/
-module.exports = function ({ dirPath = '', matching = /\./, requireDefault = false }: { dirPath: string; matching?: RegExp; requireDefault?: boolean }) {
+export const requireContext: (args?: { dirPath: string; matching?: RegExp; requireDefault?: boolean }) => any = ({ dirPath = '', matching = /\./, requireDefault = false }) => {
   const loaders = {}
-
   // const files = fs.readdirSync(__dirname + '/' + dirPath)
   const files = fs.readdirSync(dirPath)
   files.forEach((fileName = '') => {
@@ -34,3 +33,6 @@ module.exports = function ({ dirPath = '', matching = /\./, requireDefault = fal
   })
   return loaders
 }
+
+export default requireContext
+// module.exports = requireContext

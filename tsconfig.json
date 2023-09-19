@@ -4,8 +4,8 @@
     "outDir": "./dist",
     "baseUrl": "./",
     // "module": "commonjs",
-    // "module": "ESNext",
-    "module": "UMD",
+    "module": "ESNext",
+    // "module": "UMD",
     "target": "ESNext",
     "types": ["node"],
     "paths": {

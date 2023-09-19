@@ -26,14 +26,14 @@ export const getFormattedDateTime: (args?: { date?: Date | number | string; form
     String(date.getDay())
   ]
   return format
-    .replace('yyyy', year)
-    .replace('yy', year.substring(2))
+    .replace(/yyyy/im, year)
+    .replace(/yy/im, year.substring(2))
     .replace('MM', month.length === 1 && fillZero ? '0' + month : month)
-    .replace('dd', day.length === 1 && fillZero ? '0' + day : day)
-    .replace('hh', hour.length === 1 && fillZero ? '0' + hour : hour)
+    .replace(/dd/im, day.length === 1 && fillZero ? '0' + day : day)
+    .replace(/hh/im, hour.length === 1 && fillZero ? '0' + hour : hour)
     .replace('mm', minute.length === 1 && fillZero ? '0' + minute : minute)
-    .replace('ss', second.length === 1 && fillZero ? '0' + second : second)
-    .replace('week', WEEK_LABEL_LIST[week] || '')
+    .replace(/ss/im, second.length === 1 && fillZero ? '0' + second : second)
+    .replace(/week/im, WEEK_LABEL_LIST[week] || '')
 }
 /**
  * 获取时间戳，单位毫秒（兼容ios无法使用'-'获取时间戳的问题）

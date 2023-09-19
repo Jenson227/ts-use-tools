@@ -1,8 +1,9 @@
 {
   "name": "use-jtools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is a web side commonly used tools.",
   "author": "Jason",
+  "type": "module",
   "scripts": {
     "start": "ts-node ./src/main.ts",
     "dev": "nodemon --watch src -e ts --exec ts-node ./src/main.ts",
