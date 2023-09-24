@@ -13,8 +13,44 @@
 // 导入 ts 文件用. ts 后缀且不检查 ts 语法，是为了解决无法使用 nodemon 和 webpack 的导入 ts 文件问题
 // @ts-nocheck
 // @ts-ignore
+import './utils/algorithm.ts'
 import { LRUCache } from './utils/LRU-cache.ts'
 import { WEEK_LABEL_LIST, getFormattedDateTime, getDateTimestamp } from './utils/moment.ts'
+import { typeofData, isString, isNullString, isObject, isNullObject, isDate, isArray, isPromise, deepClone, parseJSONByFunction, parseJSON, parseUrl } from './utils/util.ts'
 
-export { LRUCache, WEEK_LABEL_LIST, getFormattedDateTime, getDateTimestamp }
-export default { LRUCache, WEEK_LABEL_LIST, getFormattedDateTime, getDateTimestamp }
+export {
+  LRUCache,
+  WEEK_LABEL_LIST,
+  getFormattedDateTime,
+  getDateTimestamp,
+  typeofData,
+  isString,
+  isNullString,
+  isObject,
+  isNullObject,
+  isDate,
+  isArray,
+  isPromise,
+  deepClone,
+  parseJSONByFunction,
+  parseJSON,
+  parseUrl
+}
+export default {
+  LRUCache,
+  WEEK_LABEL_LIST,
+  getFormattedDateTime,
+  getDateTimestamp,
+  typeofData,
+  isString,
+  isNullString,
+  isObject,
+  isNullObject,
+  isDate,
+  isArray,
+  isPromise,
+  deepClone,
+  parseJSONByFunction,
+  parseJSON,
+  parseUrl
+}
