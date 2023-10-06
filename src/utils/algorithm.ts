@@ -1,15 +1,3 @@
-// 两数之和
-function twoSum(nums: number[], target: number): number[] {
-  const numMap = new Map<number, number>()
-  for (let i = 0; i < nums.length; i++) {
-    const n = target - nums[i]
-    if (numMap.has(n)) return [numMap.get(n), i]
-    numMap.set(nums[i], i)
-  }
-  return []
-}
-twoSum([2, 7, 11, 15], 9)
-
 // 位运算
 // const enum ShapeFlags {
 //   a = 1,
@@ -26,6 +14,18 @@ twoSum([2, 7, 11, 15], 9)
 // console.log(ShapeFlags.e)
 // console.log(ShapeFlags.f)
 // console.log(ShapeFlags.f & ShapeFlags.d)
+
+// 两数之和
+function twoSum(nums: number[], target: number): number[] {
+  const numMap = new Map<number, number>()
+  for (let i = 0; i < nums.length; i++) {
+    const n = target - nums[i]
+    if (numMap.has(n)) return [numMap.get(n), i]
+    numMap.set(nums[i], i)
+  }
+  return []
+}
+twoSum([2, 7, 11, 15], 9)
 
 // 三数之和
 function threeSum(nums: number[]): number[][] {
@@ -81,3 +81,36 @@ function threeSum(nums: number[]): number[][] {
 }
 // threeSum([-1, 0, 1, 2, -1])
 threeSum([-1, 0, 1, 2, -1, -1, -1, -4])
+
+// leftpad函数
+function leftpad(str: string, length: number, ch: string) {
+  const len = length - str.length + 1
+  return len > 0 ? Array(len).join(ch) + str : str
+}
+// 二分思路优化 leftpad
+function leftpadv2(str: string, length: number, ch: string) {
+  let len = length - str.length
+  let total = ''
+  const condition = true
+
+  while (condition) {
+    // if (len % 2 === 1)
+    if (len & 1) total += ch
+    if (len === 1) return total + str
+    ch += ch
+    // len = parseInt(String(len / 2))
+    len = len >> 1
+  }
+}
+// console.info('leftpad start')
+// console.time('leftpad')
+// for (let i = 0; i < 1000; i++) {
+leftpad('hello', 100000, '0')
+// }
+// console.timeEnd('leftpad')
+// console.info('leftpadv2 start')
+// console.time('leftpadv2')
+// for (let i = 0; i < 1000; i++) {
+leftpadv2('hello', 100000, '0')
+// }
+// console.timeEnd('leftpadv2')
