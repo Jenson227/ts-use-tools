@@ -91,7 +91,7 @@ export const deepClone: (source: any) => any = source => {
  * @param { string } json - JSON 字符串
  * @return { any }
  **/
-export const parseJSONByFunction: (json: string) => any = json => new Function('return ' + json)()
+export const parseJSONByFunction: (json: string) => any = json => new Function('return ' + eval(`("${json}")`))()
 
 /**
  * 解析 JSON 字符串
@@ -106,8 +106,7 @@ export const parseJSON: (json: string) => any = (json = '') => {
       if (typeof json === 'string') return parseJSON(json)
       return json
     } catch (errMsg) {
-      if (/(Expected property name or '}' in JSON)|(Unexpected token \\ in JSON)/gim.test(errMsg)) return parseJSON(`"${json}"`)
-      if (/Bad escaped character in JSON/gim.test(errMsg)) return parseJSON(parseJSONByFunction(json))
+      if (/SyntaxError|(Expected property name or '}' in JSON)|(Unexpected token \\ in JSON)|(Bad escaped character in JSON)/gim.test(errMsg)) return parseJSON(parseJSONByFunction(json))
       return {}
     }
   }
