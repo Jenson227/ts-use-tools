@@ -102,7 +102,21 @@ export const parseJSONByFunction: (json: string) => any = json => new Function('
 export const parseJSON: (json: string) => any = (json = '') => {
   if (typeof json === 'string') {
     try {
-      json = JSON.parse(json.trim().replace(/[\r|\n|\r\n|\t]/g, ''))
+      json = JSON.parse(
+        decodeURIComponent(
+          json
+            .trim()
+            .replace(/[\r|\n|\r\n|\t]/g, '')
+            .replace(/%5C/g, '%5C%5C')
+            .replace(/%22/g, '%5C%22')
+            .replace(/%2F/g, '%5C%2F')
+            .replace(/%08/g, '%5Cb')
+            .replace(/%0C/g, '%5Cf')
+            .replace(/%0A/g, '%5Cn')
+            .replace(/%0D/g, '%5Cr')
+            .replace(/%09/g, '%5Ct')
+        )
+      )
       if (typeof json === 'string') return parseJSON(json)
       return json
     } catch (errMsg) {
