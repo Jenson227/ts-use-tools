@@ -120,6 +120,7 @@ export const parseJSON: (json: string) => any = (json = '') => {
       if (typeof json === 'string') return parseJSON(json)
       return json
     } catch (errMsg) {
+      if (/not valid JSON/gim.test(errMsg)) return json
       if (/SyntaxError|(Expected property name or '}' in JSON)|(Unexpected token \\ in JSON)|(Bad escaped character in JSON)/gim.test(errMsg)) return parseJSON(parseJSONByFunction(json))
       return {}
     }
