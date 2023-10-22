@@ -114,3 +114,21 @@ leftpad('hello', 100000, '0')
 leftpadv2('hello', 100000, '0')
 // }
 // console.timeEnd('leftpadv2')
+
+// 斐波那契数
+function fib(n: number): number {
+  if (n <= 1) return n
+  return fib(n - 1) + fib(n - 2)
+}
+console.log(fib(4))
+function fibv2(n: number): number {
+  const cache = []
+  const helper: (any, number) => number = (result, m) => {
+    if (m <= 1) return m
+    if (result[m]) return result[m]
+    result[m] = helper(result, m - 1) + helper(result, m - 2)
+    return result[m]
+  }
+  return helper(cache, n)
+}
+console.log(fibv2(8))
